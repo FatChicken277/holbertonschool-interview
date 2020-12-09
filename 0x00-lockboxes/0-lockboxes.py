@@ -17,21 +17,25 @@ def canUnlockAll(boxes):
 
     boxes_count = len(boxes)
     checked = [False] * boxes_count
-    check(boxes, 0, checked)
+    check(boxes, 0, checked, boxes_count)
 
     return all(checked)
 
 
-def check(box, index, checked):
+def check(box, index, checked, boxes_count):
     """check the box if not opened.
 
     Args:
         box (list): box to check.
         index (int): index of the box to check.
         checked (list): list of checked boxes.
+        boxes_count (int): len of all boxes.
     """
+    if index > boxes_count - 1:
+        return
     if checked[index]:
         return
+
     checked[index] = True
     for i in box[index]:
-        check(box, i, checked)
+        check(box, i, checked, boxes_count)
