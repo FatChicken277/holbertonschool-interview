@@ -32,6 +32,7 @@ def check(box, index, checked, boxes_count):
         boxes_count (int): len of all boxes.
     """
     if index > boxes_count - 1:
+        checked.append(False)
         return
     if checked[index]:
         return
