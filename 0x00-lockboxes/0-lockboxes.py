@@ -13,7 +13,7 @@ def canUnlockAll(boxes):
         true: return True if all boxes can be opened, else return False
     """
     if len(boxes) == 0:
-        return True
+        return False
 
     boxes_count = len(boxes)
     checked = [False] * boxes_count
