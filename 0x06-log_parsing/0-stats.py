@@ -13,10 +13,11 @@ try:
         if len(line.split()) != 9:
             continue
 
-        if line.split()[-2] in status_codes:
+        if line.split()[-2] in status_codes and line.split()[-2].isnumeric():
             status_codes[line.split()[-2]] += 1
 
-        total_size += int(line.split()[-1])
+        if line.split()[-1].isnumeric():
+            total_size += int(line.split()[-1])
 
         if num % 10 == 0:
             print("File size: {}".format(total_size))
