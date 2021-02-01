@@ -20,11 +20,11 @@ try:
 
         if num % 10 == 0:
             print("File size: {}".format(total_size))
-            for key, val in status_codes.items():
+            for key, val in sorted(status_codes.items()):
                 if val != 0:
                     print("{}: {}".format(key, val))
 finally:
     print("File size: {}".format(total_size))
-    for key, val in status_codes.items():
+    for key, val in sorted(status_codes.items()):
         if val != 0:
             print("{}: {}".format(key, val))
