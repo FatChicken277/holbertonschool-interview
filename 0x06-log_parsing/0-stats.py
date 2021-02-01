@@ -23,7 +23,7 @@ try:
             for key, val in status_codes.items():
                 if val != 0:
                     print("{}: {}".format(key, val))
-except KeyboardInterrupt:
+finally:
     print("File size: {}".format(total_size))
     for key, val in status_codes.items():
         if val != 0:
