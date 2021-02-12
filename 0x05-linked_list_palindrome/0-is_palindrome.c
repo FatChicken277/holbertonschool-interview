@@ -2,6 +2,20 @@
 #include "lists.h"
 
 /**
+ * copy_list - copy a linked list.
+ * @head: pointer to the head node of the list to copy
+ * @copy: pointer to the copy node where copying
+ */
+void copy_list(listint_t *head, listint_t **copy)
+{
+	while (head != NULL)
+	{
+		add_nodeint_end(copy, head->n);
+		head = head->next;
+	}
+}
+
+/**
  * reverseList - reverse a linked list.
  * @head: pointer to the head node of the list to reverse
  */
@@ -37,7 +51,10 @@ void reverseList(listint_t **head)
  */
 int is_palindrome(listint_t **head)
 {
-	listint_t *reversed = *head;
+	listint_t *reversed = NULL, *aux = *head;
+
+	copy_list(*head, &reversed);
+	*head = aux;
 
 	reverseList(&reversed);
 
