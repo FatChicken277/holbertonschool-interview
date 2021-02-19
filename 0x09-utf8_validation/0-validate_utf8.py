@@ -20,7 +20,7 @@ def validUTF8(data):
             elif n_bytes == 0:
                 continue
         else:
-             if not (byte[0] == '1' and byte[1] == '0'):
+            if not (byte[0] == '1' and byte[1] == '0'):
                 return False
 
         n_bytes = n_bytes - 1
