@@ -32,6 +32,7 @@ void make_heap(int *array, int size, int i, int new_size)
 
 	if (left < size && array[left] > array[largest])
 		largest = left;
+
 	if (right < size && array[right] > array[largest])
 		largest = right;
 
@@ -56,6 +57,7 @@ void heap_sort(int *array, size_t size)
 
 	for (i = size / 2 - 1; i >= 0; i--)
 		make_heap(array, size, i, size);
+
 	for (i = size - 1; i > 0; i--)
 	{
 		if (array[0] >= array[i])
@@ -63,6 +65,7 @@ void heap_sort(int *array, size_t size)
 			swap(&array[0], &array[i]);
 			print_array(array, size);
 		}
+
 		make_heap(array, i, 0, size);
 	}
 }
