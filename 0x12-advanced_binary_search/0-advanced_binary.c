@@ -9,9 +9,11 @@
  */
 void print_array(int *array, int l, int r)
 {
+	int i;
+
 	printf("Searching in array: ");
 
-	for (int i = l; i < r; i++)
+	for (i = l; i < r; i++)
 		printf("%d, ", array[i]);
 
 	printf("%d\n", array[r]);
