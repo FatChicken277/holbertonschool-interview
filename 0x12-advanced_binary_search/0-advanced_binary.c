@@ -27,7 +27,7 @@ void print_array(int *array, int l, int r)
  */
 int binary_recursive(int *array, int l, int r, int value)
 {
-	int i, mid = l + (r - l) / 2;
+	int mid = l + (r - l) / 2;
 	
 	if (r >= l)
 	{
