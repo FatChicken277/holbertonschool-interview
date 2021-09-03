@@ -9,11 +9,9 @@
  */
 void print_array(int *array, int l, int r)
 {
-	int i = l;
-
 	printf("Searching in array: ");
 
-	for (i; i < r; i++)
+	for (int i = l; i < r; i++)
 		printf("%d, ", array[i]);
 
 	printf("%d\n", array[r]);
@@ -30,7 +28,7 @@ void print_array(int *array, int l, int r)
 int binary_recursive(int *array, int l, int r, int value)
 {
 	int mid = l + (r - l) / 2;
-	
+
 	if (r >= l)
 	{
 		print_array(array, l, r);
