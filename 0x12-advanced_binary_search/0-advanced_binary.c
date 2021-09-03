@@ -44,7 +44,7 @@ int binary_recursive(int *array, int l, int r, int value)
 		}
 
 		if (array[mid] >= value)
-			return (binary_recursive(array, l, mid - 1, value));
+			return (binary_recursive(array, l, mid, value));
 
 		return (binary_recursive(array, mid + 1, r, value));
 	}
