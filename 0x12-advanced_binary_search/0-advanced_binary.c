@@ -1,54 +1,71 @@
 #include "search_algos.h"
 
 /**
- * binary_recursive - search for a value in an array using recursion
- * @array: int array.
- * @l: left value of the array.
- * @r: right value of the array.
- * @value: value to search in the array.
- * Return: index of occurrence or -1 if not found or array is NULL.
+ * print_array - Print array or subarray
+ * @array: pointer to the first element of the array to search in
+ * @min: start point of the array
+ * @max: end point of array
  */
-int binary_recursive(int *array, int l, int r, int value)
+void print_array(int *array, int min, int max)
 {
-	if (r >= l)
+	int i;
+
+	printf("Searching in array: ");
+	for (i = min; i < max; i++)
+		printf("%d, ", array[i]);
+	printf("%d", array[i]);
+
+	printf("\n");
+}
+
+/**
+ * aux_recursion - aux_recursion
+ * @array: pointer to the first element of the array to search in
+ * @min: start point of the array
+ * @max: end point of array
+ * @value: value to search for
+ * Return:  index where value is located
+ * If value is not present in array or if array is NULL,
+ * your function must return -1
+ */
+int aux_recursion(int *array, int min, int max, int value)
+{
+	if (max >= min)
 	{
-		int mid = l + (r - l) / 2;
+		int mid = min + (max - min) / 2;
 
-		printf("Searching in array: ");
-
-		for (int i = l; i < r; i++)
-			printf("%d, ", array[i]);
-
-		printf("%d\n", array[r]);
+		print_array(array, min, max);
 
 		if (array[mid] == value)
 		{
 			if (array[mid - 1] == value)
-				return (binary_recursive(array, l, mid, value));
+				return (aux_recursion(array, min, mid, value));
 
 			return (mid);
 		}
-
-		if (array[mid] > value)
-			return (binary_recursive(array, l, mid - 1, value));
-
-		return (binary_recursive(array, mid + 1, r, value));
+		if (array[mid] >= value)
+			return (aux_recursion(array, min, mid, value));
+		return (aux_recursion(array, mid + 1, max, value));
 	}
 
 	return (-1);
 }
 
 /**
- * advanced_binary - call binary search function
- * @array: int array.
- * @size: size of array.
- * @value: value to search in the array.
- * Return: binary_recursive function return value
+ * advanced_binary -  searches for a value in a
+ * sorted array of integers.
+ * @array: pointer to the first element of the array to search in
+ * @size: number of elements in array
+ * @value: value to search for
+ * Return:  index where value is located
+ * If value is not present in array or if array is NULL,
+ * your function must return -1
+ * array will be sorted in ascending order
  */
 int advanced_binary(int *array, size_t size, int value)
 {
-	if (!array || size == 0)
+	if (array == NULL)
 		return (-1);
 
-	return (binary_recursive(array, 0, size - 1, value));
+	return (aux_recursion(array, 0, size - 1, value));
 }
