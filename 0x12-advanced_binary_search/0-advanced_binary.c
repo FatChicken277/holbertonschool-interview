@@ -1,6 +1,23 @@
 #include "search_algos.h"
 
 /**
+ * print_array - print an array of integers
+ * @array: array to print
+ * @l: left value of the array
+ * @r: right value of the array
+ * Return - no return value
+ */
+void print_array(int *array, int l, int r)
+{
+	printf("Searching in array: ");
+
+	for (int i = l; i < r; i++)
+		printf("%d, ", array[i]);
+
+	printf("%d\n", array[r]);
+}
+
+/**
  * binary_recursive - search for a value in an array using recursion
  * @array: int array.
  * @l: left value of the array.
@@ -14,12 +31,7 @@ int binary_recursive(int *array, int l, int r, int value)
 	{
 		int mid = l + (r - l) / 2;
 
-		printf("Searching in array: ");
-
-		for (int i = l; i < r; i++)
-			printf("%d, ", array[i]);
-
-		printf("%d\n", array[r]);
+		print_array(array, l, r);
 
 		if (array[mid] == value)
 		{
