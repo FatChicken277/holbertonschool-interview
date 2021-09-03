@@ -1,7 +1,7 @@
 #include "search_algos.h"
 
 /**
- * binary_search - Searches for a value in an array using recursion
+ * binary_search - search for a value in an array using recursion
  * @array: int array.
  * @l: left value of the array.
  * @r: right value of the array.
