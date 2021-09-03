@@ -1,14 +1,14 @@
 #include "search_algos.h"
 
 /**
- * binary_search - search for a value in an array using recursion
+ * binary_recursive - search for a value in an array using recursion
  * @array: int array.
  * @l: left value of the array.
  * @r: right value of the array.
  * @value: value to search in the array.
  * Return: index of occurrence or -1 if not found or array is NULL.
  */
-int binary_search(int *array, int l, int r, int value)
+int binary_recursive(int *array, int l, int r, int value)
 {
 	if (r >= l)
 	{
@@ -24,15 +24,15 @@ int binary_search(int *array, int l, int r, int value)
 		if (array[mid] == value)
 		{
 			if (array[mid - 1] == value)
-				return (binary_search(array, l, mid, value));
+				return (binary_recursive(array, l, mid, value));
 
 			return (mid);
 		}
 
 		if (array[mid] > value)
-			return (binary_search(array, l, mid - 1, value));
+			return (binary_recursive(array, l, mid - 1, value));
 
-		return (binary_search(array, mid + 1, r, value));
+		return (binary_recursive(array, mid + 1, r, value));
 	}
 
 	return (-1);
@@ -43,12 +43,12 @@ int binary_search(int *array, int l, int r, int value)
  * @array: int array.
  * @size: size of array.
  * @value: value to search in the array.
- * Return: binary_search function return value
+ * Return: binary_recursive function return value
  */
 int advanced_binary(int *array, size_t size, int value)
 {
-	if (!array)
+	if (!array || value > array[size - 1])
 		return (-1);
 
-	return (binary_search(array, 0, size - 1, value));
+	return (binary_recursive(array, 0, size - 1, value));
 }
