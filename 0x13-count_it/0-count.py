@@ -33,8 +33,7 @@ def process_subreddit(hot_subreddits, word_list):
 
 
 def count_words(subreddit, word_list, hot_list=[], after=""):
-    """This method returns a list containing the titles of all
-        hot articles for a given subreddit"""
+    """This method gets all hot articles for a given subreddit"""
     headers = {"user-agent": "1637-holberton"}
 
     if after is None:
