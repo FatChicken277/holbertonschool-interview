@@ -47,7 +47,7 @@ def count_words(subreddit, word_list):
     for word in deduplicated_words:
         total = 0
         for hot_subreddit in hot_subreddits:
-            if word in hot_subreddit.lower():
+            if word in hot_subreddit:
                 total += 1
         if total > 0:
             list_all[word] = total
