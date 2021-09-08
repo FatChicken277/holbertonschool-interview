@@ -14,15 +14,17 @@ def process_subreddit(hot_subreddits, word_list):
         return
 
     lowered_words = (map(lambda x: x.lower(), word_list))
-    deduplicated_words = list(dict.fromkeys(lowered_words))
 
-    for word in deduplicated_words:
+    for word in lowered_words:
         total = 0
         for hot_subreddit in hot_subreddits:
             if word in hot_subreddit:
                 total += 1
         if total > 0:
-            list_all[word] = total
+            if word not in list_all:
+                list_all[word] = total
+            else:
+                list_all[word] += total
 
     result = sorted(list_all.items(), key=lambda x: x[1], reverse=True)
     for k, v in result:
