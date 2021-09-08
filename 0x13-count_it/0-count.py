@@ -26,7 +26,8 @@ def process_subreddit(hot_subreddits, word_list):
             else:
                 list_all[word] += total
 
-    result = sorted(list_all.items(), key=lambda x: x[1], reverse=True)
+    result = sorted(list_all.items(), key=lambda x: x[0])
+    result = sorted(result, key=lambda x: x[1], reverse=True)
     for k, v in result:
         print("{}: {}".format(k, v))
 
