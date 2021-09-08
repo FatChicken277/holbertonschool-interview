@@ -13,13 +13,13 @@ def process_subreddit(hot_subreddits, word_list):
     if hot_subreddits is None:
         return
 
-    lowered_words = (map(lambda x: x.lower(), word_list))
+    lowered_words = list(map(lambda x: x.lower(), word_list))
 
     for word in lowered_words:
         total = 0
         for hot_subreddit in hot_subreddits:
-            if word in hot_subreddit:
-                total += 1
+            if word in hot_subreddit.lower():
+                total += hot_subreddit.lower().split().count(word)
         if total > 0:
             if word not in list_all:
                 list_all[word] = total
