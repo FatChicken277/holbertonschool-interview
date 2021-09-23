@@ -37,9 +37,8 @@ int is_number(char *ch)
  * @num2: second number charstring.
  * @l1: length of the first number.
  * @l2: length of the second number.
- * Return: the all multiplication in a charstring.
  */
-char *multiply(char *num1, char *num2, int l1, int l2)
+void multiply(char *num1, char *num2, int l1, int l2)
 {
 	char *product = NULL;
 	int i, j, n, total_length = l1 + l2;
@@ -64,10 +63,12 @@ char *multiply(char *num1, char *num2, int l1, int l2)
 	for (i = 0; i < total_length; i++)
 		product[i] += '0';
 
-	if (product[0] == '0')
-		product += 1;
+	if (*product == '0')
+		_puts(product + 1);
+	else
+		_puts(product);
 
-	return (product);
+	free(product);
 }
 
 /**
@@ -79,7 +80,6 @@ char *multiply(char *num1, char *num2, int l1, int l2)
 int main(int argc, char *argv[])
 {
 	int l1 = 0, l2 = 0;
-	char *result = NULL;
 
 	if (argc != 3 || !is_number(argv[1]) || !is_number(argv[2]))
 	{
@@ -98,10 +98,7 @@ int main(int argc, char *argv[])
 	while (argv[2][l2])
 		l2++;
 
-	result = multiply(argv[1], argv[2], l1, l2);
-	_puts(result);
-
-	free(result -= 1);
+	multiply(argv[1], argv[2], l1, l2);
 
 	return (0);
 }
