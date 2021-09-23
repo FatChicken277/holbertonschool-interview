@@ -87,7 +87,7 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 
-	if (*argv[1] == '0' && *argv[2] == '0')
+	if (*argv[1] == '0' || *argv[2] == '0')
 	{
 		_puts("0");
 		return (0);
