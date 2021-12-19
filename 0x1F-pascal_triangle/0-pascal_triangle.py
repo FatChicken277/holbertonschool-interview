@@ -2,7 +2,20 @@
 """
 This module contains the pascal_triangle method
 """
-import math
+
+
+def binomialCoeff(n, k):
+    """
+    Return the binomial coefficient
+    """
+    res = 1
+    if (k > n - k):
+        k = n - k
+    for i in range(0, k):
+        res = res * (n - i)
+        res = res // (i + 1)
+
+    return res
 
 
 def pascal_triangle(n):
@@ -15,10 +28,7 @@ def pascal_triangle(n):
         row = []
 
         for element in range(count + 1):
-            a = math.factorial(count)
-            b = math.factorial(element) * math.factorial(count - element)
-
-            row.append(int(a / b))
+            row.append(binomialCoeff(count, element))
 
         result.append(row)
 
