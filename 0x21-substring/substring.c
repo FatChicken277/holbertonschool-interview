@@ -11,10 +11,14 @@
  */
 int *find_substring(char const *s, char const **words, int nb_words, int *n)
 {
-	int *value = 0, *value2 = 0;
+	int *idx_array;
+
+	idx_array = malloc(10);
+	if (!idx_array)
+		return (0);
 
 	if (*s && *words && nb_words && *n)
-		return (value2);
+		return (idx_array);
 
-	return (value);
+	return (idx_array);
 }
