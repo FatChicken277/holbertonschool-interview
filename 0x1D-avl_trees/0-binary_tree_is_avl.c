@@ -1,49 +1,24 @@
 #include "binary_trees.h"
 
 /**
- * binary_tree_is_avl - check if a binary tree is a valid AVL tree
- * @tree: pointer to root node of tree
- * Return: 1 if AVL tree, else 0
+ * binary_tree_height - measures the height of a binary tree.
+ * @tree: A binary tree.
+ * Return: return the height of the binary tree.
  */
-int binary_tree_is_avl(const binary_tree_t *tree)
+int binary_tree_height(const binary_tree_t *tree)
 {
-	int lheight, rheight;
+	int height_left, height_right;
 
-	if (tree == NULL)
+	if (!tree || (!tree->left && !tree->right))
 		return (0);
 
-	lheight = custom_binary_tree_height(tree->left);
-	rheight = custom_binary_tree_height(tree->right);
+	height_left = binary_tree_height(tree->left);
+	height_right = binary_tree_height(tree->right);
 
-	if (abs(lheight - rheight) <= 1)
-		return (binary_tree_is_bst(tree));
-	return (0);
-}
-
-/**
- * custom_binary_tree_height - Measure the height
- * of a binary tree from a given node
- * @tree: pointer to node of tree to measure
- * Description: Edited to work with balance factor function
- * Return: height of tree or 0 if NULL
- */
-int custom_binary_tree_height(const binary_tree_t *tree)
-{
-	int left, right;
-
-	if (tree == NULL)
-		return (0);
-
-	if (tree->left == NULL && tree->right == NULL)
-		return (1);
-
-	left = custom_binary_tree_height(tree->left) + 1;
-	right = custom_binary_tree_height(tree->right) + 1;
-
-	if (left > right)
-		return (left);
+	if (height_left > height_right)
+		return (height_left + 1);
 	else
-		return (right);
+		return (height_right + 1);
 }
 
 /**
@@ -83,4 +58,25 @@ int binary_tree_is_bst(const binary_tree_t *tree)
 		return (0);
 
 	return (helper(tree, num, num));
+}
+
+/**
+ * binary_tree_is_avl - check if a binary tree is a valid AVL tree
+ * @tree: pointer to root node of tree
+ * Return: 1 or 0
+ */
+int binary_tree_is_avl(const binary_tree_t *tree)
+{
+	int lh, rh;
+
+	if (tree == NULL)
+		return (0);
+
+	lh = binary_tree_height(tree->left);
+	rh = binary_tree_height(tree->right);
+
+	if (abs(lh - rh) <= 1)
+		return (binary_tree_is_bst(tree));
+
+	return (0);
 }

@@ -23,7 +23,7 @@ typedef struct binary_tree_s
 } binary_tree_t;
 
 void binary_tree_print(const binary_tree_t *);
-int custom_binary_tree_height(const binary_tree_t *tree);
+int binary_tree_height(const binary_tree_t *tree);
 int binary_tree_is_avl(const binary_tree_t *tree);
 int binary_tree_is_bst(const binary_tree_t *tree);
 int helper(const binary_tree_t *tree, int low, int hig);
